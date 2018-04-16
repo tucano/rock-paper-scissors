@@ -36,6 +36,7 @@ export class Player {
   setHand(hand: Hand) {
     this.previousHand = this.currentHand;
     this.currentHand = hand;
+    this.handsUsage[hand.name]++;
   }
 
   makeMove(enemy: Player) {

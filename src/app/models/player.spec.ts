@@ -55,6 +55,11 @@ describe('Human Player', () => {
     expect(player.previousHand).toEqual(Paper);
   });
 
+  it('should setHand update handsUsage', () => {
+    player.setHand(Rock);
+    expect(player.handsUsage['Rock']).toEqual(1);
+  });
+
   it('should be Human', () => {
     expect(player.human).toBeTruthy();
   });
