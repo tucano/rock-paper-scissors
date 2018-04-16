@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
  * `npm build` to build production code
  * `npm e2e` to run e2e tests
  * `npm run coverage` to run test and see coverage (report: ./coverage/index.html)
- 8 `npm check` to run lint + test unit + coverage + e2e
+ * `npm run check` to run lint + test unit + coverage + e2e
 
 ### JASMINE MATCHERS CHEATSHEET
 
