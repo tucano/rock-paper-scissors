@@ -1,5 +1,6 @@
 import { Player } from './player';
-import { EmptyHand, Rock, Paper } from './hand';
+import { EmptyHand, Rock, Paper, Scissors, ValidHands } from './hand';
+import { GameStyle } from './game-style';
 
 describe('Human Player', () => {
   let player: Player;
@@ -64,3 +65,55 @@ describe('Human Player', () => {
     .toThrowError(`Can't use makeMove for a Human player`);
   });
 });
+
+describe('Computer Player', () => {
+  let player: Player;
+  let gameStyle: GameStyle;
+  const id = 0;
+  const name = 'pippo';
+
+  beforeEach(() => {
+    gameStyle = new GameStyle(0, "random");
+    player = new Player(id, name, false, gameStyle);
+  });
+
+  afterEach(() => {
+    player = null;
+  });
+
+  it('should throw exception if init without gameStyle', () => {
+    expect(() => (new Player(99, name, false)))
+    .toThrowError((`Can't init a Computer player without a gameStyle`));
+  });
+
+  it('should set currentHand if I call draw', () => {
+    const enemy = new Player(99, 'test', true);
+    player.makeMove(enemy);
+    expect(ValidHands).toContain(player.currentHand);
+  });
+});
+
+describe('Computer Player: iteration1', () => {
+  let player: Player;
+  let gameStyle: GameStyle;
+  const id = 0;
+  const name = 'pippo';
+
+  beforeEach(() => {
+    gameStyle = new GameStyle(0, "iteration1", 1);
+    player = new Player(id, name, false, gameStyle);
+  });
+
+  afterEach(() => {
+    player = null;
+  });
+
+  it('should set currentHand if I call makeMove with a previousHand', () => {
+    const enemy = new Player(99, 'test', true);
+    enemy.previousHand = Rock;
+    player.currentHand =  Scissors;
+    player.makeMove(enemy);
+    expect(player.currentHand).toBe(Paper);
+  });
+});
+
