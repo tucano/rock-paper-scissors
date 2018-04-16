@@ -21,6 +21,20 @@ export class Hand {
     }
     return '';
   }
+
+  public getWinners(): Hand[] {
+    const hands: Hand[] = [];
+    for (const enemyHand of ValidHands) {
+      if (enemyHand.beats(this)) {
+        hands.push(enemyHand);
+      }
+    }
+    return hands;
+  }
+
+  public empty(): boolean {
+    return (Object.keys(this.beatList).length === 0);
+  }
 }
 
 export const EmptyHand: Hand = new Hand(0, 'Empty hand', {}, '');

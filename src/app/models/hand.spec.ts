@@ -38,6 +38,14 @@ describe('Generic Hand', () => {
   it('should have a beatString() method', () => {
     expect(hand.beatString(hand)).toEqual('');
   });
+
+  it('should return a list of winners', () => {
+    expect(hand.getWinners()).toEqual([]);
+  });
+
+  it('should return empty', () => {
+    expect(hand.empty()).toBeTruthy();
+  });
 });
 
 describe('Empty hand', () => {
@@ -49,6 +57,14 @@ describe('Empty hand', () => {
     expect(EmptyHand.beats(Rock)).toBeFalsy();
     expect(EmptyHand.beats(Paper)).toBeFalsy();
     expect(EmptyHand.beats(Scissors)).toBeFalsy();
+  });
+
+  it('should return a list of winners', () => {
+    expect(EmptyHand.getWinners()).toEqual(ValidHands);
+  });
+
+  it('should return empty', () => {
+    expect(EmptyHand.empty()).toBeTruthy();
   });
 });
 
@@ -76,6 +92,10 @@ describe('Rock', () => {
   it('should have an image path', () => {
     expect(Rock.imgPath).toEqual('assets/img/rock-icon-grey.png');
   });
+
+  it('should return a list of winners', () => {
+    expect(Rock.getWinners()).toEqual([Paper]);
+  });
 });
 
 describe('Paper', () => {
@@ -102,6 +122,10 @@ describe('Paper', () => {
   it('should have an image path', () => {
     expect(Paper.imgPath).toEqual('assets/img/paper-icon-grey.png');
   });
+
+  it('should return a list of winners', () => {
+    expect(Paper.getWinners()).toEqual([Scissors]);
+  });
 });
 
 describe('Scissors', () => {
@@ -127,6 +151,10 @@ describe('Scissors', () => {
 
   it('should have an image path', () => {
     expect(Scissors.imgPath).toEqual('assets/img/scissors-icon-grey.png');
+  });
+
+  it('should return a list of winners', () => {
+    expect(Scissors.getWinners()).toEqual([Rock]);
   });
 });
 
