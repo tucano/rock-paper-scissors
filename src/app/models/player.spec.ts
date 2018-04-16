@@ -36,7 +36,7 @@ describe('Human Player', () => {
   });
 
   it('should have an handsUsage list', () => {
-    expect(player.handsUsage).toEqual({'Rock': 0, 'Paper': 0, 'Scissors': 0});
+    expect(player.handsUsage['Rock']).toEqual(0);
   });
 
   it('should not be ready', () => {
@@ -78,7 +78,7 @@ describe('Computer Player', () => {
   const name = 'pippo';
 
   beforeEach(() => {
-    gameStyle = new GameStyle(0, "random");
+    gameStyle = new GameStyle(0, 'random');
     player = new Player(id, name, false, gameStyle);
   });
 
@@ -105,7 +105,7 @@ describe('Computer Player: iteration1', () => {
   const name = 'pippo';
 
   beforeEach(() => {
-    gameStyle = new GameStyle(0, "iteration1", 1);
+    gameStyle = new GameStyle(0, 'iteration1', 1);
     player = new Player(id, name, false, gameStyle);
   });
 

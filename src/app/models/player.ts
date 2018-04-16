@@ -24,7 +24,7 @@ export class Player {
     this.previousHand = EmptyHand;
     this.gameStyle = gameStyle;
 
-    for (let hand of ValidHands) {
+    for (const hand of ValidHands) {
       this.handsUsage[hand.name] = 0;
     }
   }
