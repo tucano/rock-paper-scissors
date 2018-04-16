@@ -48,3 +48,5 @@ export const Scissors: Hand = new Hand(3, 'Scissors',
   },
   'assets/img/scissors-icon-grey.png'
 );
+
+export const ValidHands: Hand[] = [Rock, Paper, Scissors];

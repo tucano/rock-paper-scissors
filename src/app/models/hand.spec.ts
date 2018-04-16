@@ -1,4 +1,4 @@
-import { Hand, EmptyHand, Rock, Paper, Scissors } from './hand';
+import { Hand, EmptyHand, Rock, Paper, Scissors, ValidHands } from './hand';
 
 describe('Generic Hand', () => {
   let hand: Hand;
@@ -127,5 +127,11 @@ describe('Scissors', () => {
 
   it('should have an image path', () => {
     expect(Scissors.imgPath).toEqual('assets/img/scissors-icon-grey.png');
+  });
+});
+
+describe('ValidHands', () => {
+  it('should return an array of Hand', () => {
+    expect(ValidHands).toEqual([Rock, Paper, Scissors]);
   });
 });
