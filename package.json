@@ -1,23 +1,31 @@
 {
   "name": "rock-paper-scissors",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "An Angular Rock Paper Scissors",
   "license": "MIT",
+  "author": "Davide Rambaldi <davide.rambaldi@gmail.com>",
+  "homepage": "https://github.com/tucano/rock-paper-scissors",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "coverage": "ng test --watch=false --code-coverage",
+    "check": "ng lint && ng test --watch=false --code-coverage && ng e2e"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.2.0",
+    "@angular/cdk": "^5.2.4",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
     "@angular/core": "^5.2.0",
+    "@angular/flex-layout": "^5.0.0-beta.14",
     "@angular/forms": "^5.2.0",
     "@angular/http": "^5.2.0",
+    "@angular/material": "^5.2.4",
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
@@ -44,5 +52,16 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tucano/rock-paper-scissors.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tucano/rock-paper-scissors/issues"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 5"
   }
 }

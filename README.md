@@ -2,26 +2,38 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
-## Development server
+## NPM COMMANDS
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ * `npm start` to run the server
+ * `npm test` to run test in watch mode
+ * `npm build` to build production code
+ * `npm e2e` to run e2e tests
+ * `npm run coverage` to run test and see coverage (report: ./coverage/index.html)
+ 8 `npm check` to run lint + test unit + coverage + e2e
 
-## Code scaffolding
+### JASMINE MATCHERS CHEATSHEET
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```javascript
+expect(array).toContain(member);
+expect(fn).toThrow(string);
+expect(fn).toThrowError(string);
+expect(instance).toBe(instance);
+expect(mixed).toBeDefined();
+expect(mixed).toBeFalsy();
+expect(mixed).toBeNull();
+expect(mixed).toBeTruthy();
+expect(mixed).toBeUndefined();
+expect(mixed).toEqual(mixed);
+expect(mixed).toMatch(pattern);
+expect(number).toBeCloseTo(number, decimalPlaces);
+expect(number).toBeGreaterThan(number);
+expect(number).toBeLessThan(number);
+expect(number).toBeNaN();
+expect(spy).toHaveBeenCalled();
+expect(spy).toHaveBeenCalledTimes(number);
+expect(spy).toHaveBeenCalledWith(...arguments);
+```
 
-## Build
+### MATERIAL CHEATSHEET
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ * https://material.angular.io/components

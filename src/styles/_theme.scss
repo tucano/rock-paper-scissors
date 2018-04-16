@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+$rps-app-primary: mat-palette($md-primary);
+$rps-app-accent:  mat-palette($md-accent, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$rps-app-warn:    mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$rps-app-theme: mat-light-theme($rps-app-primary, $rps-app-accent, $rps-app-warn);
+
+// $rps-app-theme: mat-light-theme($rps-app-primary, $rps-app-accent, $rps-app-warn);
+@include angular-material-theme($rps-app-theme);
