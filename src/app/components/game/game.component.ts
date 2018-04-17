@@ -10,17 +10,19 @@ import { ValidHands, Hand } from '../../models/hand';
 })
 export class GameComponent implements OnInit {
 
-  lastGameResult = '';
+  lastGameResult = 'Ready to play?';
+  handsMsg = 'PLAYER ONE CHOOSE YOUR WEAPON!';
   computerVsComputer = false;
 
   players: Player[];
   playerOne: Player;
   playerTwo: Player;
-
+  hands: Hand[];
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
     this.getPlayers();
+    this.hands = ValidHands;
   }
 
   getPlayers(): void {
@@ -60,6 +62,11 @@ export class GameComponent implements OnInit {
 
   playersChange() {
     this.computerVsComputer = (!this.playerOne.human && !this.playerTwo.human);
+    if (this.playerOne.human) {
+      this.handsMsg = 'PLAYER ONE CHOOSE YOUR WEAPON!';
+    } else if (this.playerTwo.human) {
+      this.handsMsg = 'PLAYER TWO CHOOSE YOUR WEAPON!';
+    }
   }
 
   gameReady(): boolean {

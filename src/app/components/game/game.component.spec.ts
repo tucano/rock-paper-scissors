@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PlayerService } from '../../services/player.service';
-import { MatCardModule, MatSelectModule } from '@angular/material';
+import { MatCardModule, MatSelectModule, MatButtonModule } from '@angular/material';
 import { GameComponent } from './game.component';
 import { Player } from '../../models/player';
 import { Rock, Paper, Scissors, ValidHands } from '../../models/hand';
@@ -20,7 +20,8 @@ describe('GameComponent', () => {
         FormsModule,
         BrowserAnimationsModule,
         MatCardModule,
-        MatSelectModule
+        MatSelectModule,
+        MatButtonModule
       ],
       providers: [PlayerService]
     })
@@ -37,8 +38,8 @@ describe('GameComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a last game result empty at start', () => {
-    expect(component.lastGameResult).toEqual('');
+  it('should have a last game result', () => {
+    expect(component.lastGameResult).toEqual('Ready to play?');
   });
 
   it('should have a list of players', async(() => {

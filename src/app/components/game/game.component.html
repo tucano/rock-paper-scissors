@@ -23,10 +23,27 @@
 
       <!-- GAME BOARD -->
       <div fxLayout="column" fxLayoutAlign="center center">
-        <h1>{{ lastGameResult }} <!-- Rock smashes scissors! Player One Win! --></h1>
-        <div class="rps-gameboard" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="50px">
+        <h1 class="mat-h1">{{ lastGameResult }} <!-- Rock smashes scissors! Player One Win! --></h1>
+        <div class="rps-gameboard" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+          <img [src]="playerOne.currentHand.imgPath" *ngIf="gameReady()">
+          <span class="rps-vs" *ngIf="gameReady()">VS</span>
+          <img [src]="playerTwo.currentHand.imgPath" *ngIf="gameReady()">
         </div>
       </div>
+
+      <!-- CONTROLS -->
+      <div *ngIf="computerVsComputer; then computerControls else humanControls"></div>
+
+      <ng-template #humanControls>
+        <div fxLayoutAlign="center center">
+          <h3 class="rps-weapon-title">{{ handsMsg }}</h3>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="50px">
+          <button mat-icon-button class="rps-button" *ngFor='let hand of hands' (click)="clickHand(hand.id)" [name]="hand.name">
+            <img [src]="hand.imgPath">
+          </button>
+        </div>
+      </ng-template>
 
     </div>
   </mat-card-content>
