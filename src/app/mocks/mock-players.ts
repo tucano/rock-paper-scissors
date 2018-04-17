@@ -11,5 +11,5 @@ export const PLAYERS: Player[] = [
   new Player(1, 'Randall', false, RandomStyle),
   new Player(2, 'Snoopy', false, IterationOneStyle),
   new Player(3, 'Mark', false, IterationTwoStyle),
-  new Player(3, 'Any', false, IterationThreeStyle)
+  new Player(4, 'Andy', false, IterationThreeStyle)
 ];

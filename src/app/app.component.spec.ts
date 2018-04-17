@@ -5,9 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { GameComponent } from './components/game/game.component';
+import { StatsComponent } from './components/stats/stats.component';
 import { PlayerService } from './services/player.service';
 
-import { MatToolbarModule, MatCardModule, MatSelectModule, MatButtonModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatSelectModule, MatButtonModule, MatInputModule, MatTableModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,7 +16,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         ToolbarComponent,
-        GameComponent
+        GameComponent,
+        StatsComponent
       ],
       imports: [
         FormsModule,
@@ -24,7 +26,8 @@ describe('AppComponent', () => {
         MatCardModule,
         MatSelectModule,
         MatButtonModule,
-        MatInputModule
+        MatInputModule,
+        MatTableModule
       ],
       providers: [PlayerService]
     }).compileComponents();

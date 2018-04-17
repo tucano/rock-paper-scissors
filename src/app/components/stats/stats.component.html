@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-title>
+    <h1 class="mat-title stats-title">GAME STATS</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="human">
+        <mat-header-cell *matHeaderCellDef> Human </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.human}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="score">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Score </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.score}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="rock">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Rock Usage </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.handsUsage['Rock']}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="paper">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Paper Usage </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.handsUsage['Paper']}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="scissors">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Scissors Usage </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.handsUsage['Scissors']}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>
