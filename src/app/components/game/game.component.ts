@@ -69,7 +69,7 @@ export class GameComponent implements OnInit {
       x++;
       this.gameMessage = `${this.gameCountDown - x}`;
       // this.gameMessage
-      if(x === this.gameCountDown) {
+      if (x === this.gameCountDown) {
         this.gameMessage = 'VS';
         clearInterval(intervalId);
         this.runGame();

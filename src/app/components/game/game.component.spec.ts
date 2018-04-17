@@ -33,6 +33,11 @@ describe('GameComponent', () => {
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    jasmine.clock().install();
+  });
+
+  afterEach(function() {
+    jasmine.clock().uninstall();
   });
 
   it('should create', () => {
@@ -43,9 +48,9 @@ describe('GameComponent', () => {
     expect(component.lastGameResult).toEqual('Ready to play?');
   });
 
-  it('should have a list of players', async(() => {
+  it('should have a list of players', () => {
     expect(component.players.length).toBeGreaterThan(0);
-  }));
+  });
 
   it('should have a getPlayers method', () => {
     spyOn(component, 'getPlayers');
@@ -81,15 +86,47 @@ describe('GameComponent', () => {
     expect(ValidHands).toContain(component.playerTwo.currentHand);
   });
 
+  it('playerTwo when Human should have a currentHand after clickHand', () => {
+    component.playerOne = new Player(99, 'c', false, new GameStyle(0, 'random', 0));
+    component.playerTwo = new Player(0, 'h', true);
+    component.clickHand(1);
+    expect(component.playerTwo.currentHand).toBe(Rock);
+  });
+
   it('should have a runGame() method', () => {
     spyOn(component, 'runGame');
     component.runGame();
     expect(component.runGame).toHaveBeenCalled();
   });
 
-  it('should call runGame() after clickHand', () => {
+  it('should run a simulation', () => {
+    spyOn(component, 'runGame');
+    component.playerOne = new Player(99, 'c', false, new GameStyle(0, 'random', 0));
+    component.playerTwo = new Player(10, 'c', false, new GameStyle(0, 'random', 0));
+    component.runSimulations();
+    jasmine.clock().tick(201);
+    expect(component.runGame).toHaveBeenCalled();
+  });
+
+  it('should run more simulations', () => {
+    spyOn(component, 'runGame');
+    component.playerOne = new Player(99, 'c', false, new GameStyle(0, 'random', 0));
+    component.playerTwo = new Player(10, 'c', false, new GameStyle(0, 'random', 0));
+    component.numberOfSimulations = 100;
+    component.runSimulations();
+    jasmine.clock().tick(20001);
+    expect(component.runGame).toHaveBeenCalledTimes(100);
+  });
+
+  it('should have gameMessage 3 after clickHand', () => {
+    component.clickHand(1);
+    expect(component.gameMessage).toBe('3');
+  });
+
+  it('should have run a game after clickHand', () => {
     spyOn(component, 'runGame');
     component.clickHand(1);
+    jasmine.clock().tick(1501);
     expect(component.runGame).toHaveBeenCalled();
   });
 
@@ -99,6 +136,20 @@ describe('GameComponent', () => {
     spyOn(component, 'playersChange');
     component.playersChange();
     expect(component.playersChange).toHaveBeenCalled();
+  });
+
+  it('should change player one msg', () => {
+    component.playerOne = new Player(0, 'test0', true);
+    component.playerTwo = new Player(1, 'test1', false, new GameStyle(0, 'random', 0));
+    component.playersChange();
+    expect(component.handsMsg).toEqual('PLAYER ONE CHOOSE YOUR WEAPON!');
+  });
+
+  it('should change player two msg', () => {
+    component.playerOne = new Player(1, 'test1', false, new GameStyle(0, 'random', 0));
+    component.playerTwo = new Player(0, 'test0', true);
+    component.playersChange();
+    expect(component.handsMsg).toEqual('PLAYER TWO CHOOSE YOUR WEAPON!');
   });
 
   it('should detect computer vs computer', () => {
@@ -162,5 +213,5 @@ describe('GameComponent', () => {
     spyOn(component, 'runSimulations');
     component.runSimulations();
     expect(component.runSimulations).toHaveBeenCalled();
-  })
+  });
 });

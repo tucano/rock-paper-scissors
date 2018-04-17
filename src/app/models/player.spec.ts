@@ -128,5 +128,13 @@ describe('Computer Player: iteration1', () => {
     player.makeMove(enemy);
     expect(player.currentHand).toBe(Paper);
   });
+
+  it('should draw if I win the hand before', () => {
+    const enemy = new Player(99, 'test', true);
+    enemy.previousHand = Rock;
+    player.currentHand =  Paper;
+    player.makeMove(enemy);
+    expect(ValidHands).toContain(player.currentHand);
+  });
 });
 
