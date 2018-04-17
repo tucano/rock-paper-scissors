@@ -15,8 +15,11 @@ export class GameComponent implements OnInit {
   computerVsComputer = false;
   numberOfSimulations = 1;
   gameCountDown = 3;
+
   gameReady = false;
   counterReady = false;
+  buttonReady = true;
+
   gameMessage = 'VS';
   players: Player[];
   playerOne: Player;
@@ -39,6 +42,8 @@ export class GameComponent implements OnInit {
   }
 
   runSimulations() {
+    this.gameReady = false;
+    this.buttonReady = false;
     let x = 0;
     const intervalId = setInterval(() => {
       this.playerOne.makeMove(this.playerTwo);
@@ -46,6 +51,8 @@ export class GameComponent implements OnInit {
       this.runGame();
       if (++x === this.numberOfSimulations) {
         clearInterval(intervalId);
+        this.gameReady = false;
+        this.buttonReady = true;
       }
     }, 200);
   }
@@ -53,6 +60,7 @@ export class GameComponent implements OnInit {
   clickHand(n: number) {
     this.gameReady = false;
     this.counterReady = true;
+    this.buttonReady = false;
 
     if (this.playerOne.human) {
       this.playerOne.setHand(this.getHand(n));
@@ -73,6 +81,7 @@ export class GameComponent implements OnInit {
         this.gameMessage = 'VS';
         clearInterval(intervalId);
         this.runGame();
+        this.buttonReady = true;
       }
     }, 500);
   }

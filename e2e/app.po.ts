@@ -17,7 +17,11 @@ export class AppPage {
     return element(by.css('.rps-gameboard'));
   }
 
+  getGameBoardText() {
+   return element(by.css('.rps-gameboard')).getText();
+  }
+
   clickRock() {
-    element(by.css('button[name=Rock]')).click();
+    element(by.css('button[name="Rock"]')).click();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { Player } from '../../models/player';
 import { PlayerService } from '../../services/player.service';
@@ -8,7 +8,7 @@ import { PlayerService } from '../../services/player.service';
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss']
 })
-export class StatsComponent implements OnInit {
+export class StatsComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<Player>();
 
@@ -34,7 +34,7 @@ export class StatsComponent implements OnInit {
         case 'scissors': return +data.handsUsage['Scissors'];
         default: return '';
       }
-    });
+    };
   }
 
   ngAfterViewInit() {

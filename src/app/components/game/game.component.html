@@ -39,7 +39,7 @@
           <h3 class="rps-weapon-title">{{ handsMsg }}</h3>
         </div>
         <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="50px">
-          <button mat-icon-button class="rps-button" *ngFor='let hand of hands' (click)="clickHand(hand.id)" [name]="hand.name">
+          <button mat-icon-button class="rps-button" [disabled]="!buttonReady" *ngFor='let hand of hands' (click)="clickHand(hand.id)" [name]="hand.name">
             <img [src]="hand.imgPath">
           </button>
         </div>
@@ -51,7 +51,7 @@
         </div>
         <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
           <input type="number" [(ngModel)]="numberOfSimulations">
-          <button mat-raised-button (click)="runSimulations()">START</button>
+          <button mat-raised-button (click)="runSimulations()" [disabled]="!buttonReady">START</button>
         </div>
       </ng-template>
     </div>

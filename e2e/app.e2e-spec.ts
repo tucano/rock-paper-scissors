@@ -43,6 +43,6 @@ describe('rock-paper-scissors App', () => {
   it('should run a game when I click an hand', () => {
     page.navigateTo();
     page.clickRock();
-    expect(page.getGameBoard().getText()).not.toBe('');
+    expect(page.getGameBoardText()).toBe('VS');
   });
 });

@@ -3,7 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatSelectModule, MatToolbarModule, MatCardModule, MatInputModule, MatTableModule, MatSortModule } from '@angular/material';
+import { MatButtonModule,
+         MatSelectModule,
+         MatToolbarModule,
+         MatCardModule,
+         MatInputModule,
+         MatTableModule,
+         MatSortModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { GameComponent } from './components/game/game.component';
