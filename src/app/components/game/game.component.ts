@@ -14,11 +14,15 @@ export class GameComponent implements OnInit {
   handsMsg = 'PLAYER ONE CHOOSE YOUR WEAPON!';
   computerVsComputer = false;
   numberOfSimulations = 1;
-
+  gameCountDown = 3;
+  gameReady = false;
+  counterReady = false;
+  gameMessage = 'VS';
   players: Player[];
   playerOne: Player;
   playerTwo: Player;
   hands: Hand[];
+
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
@@ -47,6 +51,9 @@ export class GameComponent implements OnInit {
   }
 
   clickHand(n: number) {
+    this.gameReady = false;
+    this.counterReady = true;
+
     if (this.playerOne.human) {
       this.playerOne.setHand(this.getHand(n));
       this.playerTwo.makeMove(this.playerOne);
@@ -55,7 +62,19 @@ export class GameComponent implements OnInit {
       this.playerOne.makeMove(this.playerTwo);
     }
 
-    this.runGame();
+    // Timer
+    let x = 0;
+    this.gameMessage = `${this.gameCountDown}`;
+    const intervalId = setInterval(() => {
+      x++;
+      this.gameMessage = `${this.gameCountDown - x}`;
+      // this.gameMessage
+      if(x === this.gameCountDown) {
+        this.gameMessage = 'VS';
+        clearInterval(intervalId);
+        this.runGame();
+      }
+    }, 500);
   }
 
   runGame() {
@@ -71,19 +90,19 @@ export class GameComponent implements OnInit {
       this.lastGameResult = `Player Two WINS: ${gameResult}`;
       this.playerService.updateScore(this.playerTwo, 1);
     }
+    this.gameReady = true;
   }
 
   playersChange() {
+    this.gameReady = false;
+    this.counterReady = false;
+    this.lastGameResult = 'Ready to play?';
     this.computerVsComputer = (!this.playerOne.human && !this.playerTwo.human);
     if (this.playerOne.human) {
       this.handsMsg = 'PLAYER ONE CHOOSE YOUR WEAPON!';
     } else if (this.playerTwo.human) {
       this.handsMsg = 'PLAYER TWO CHOOSE YOUR WEAPON!';
     }
-  }
-
-  gameReady(): boolean {
-    return(this.playerOne.ready() && this.playerTwo.ready());
   }
 
   isInUse(player: Player) {

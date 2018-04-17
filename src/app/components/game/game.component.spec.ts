@@ -61,8 +61,8 @@ describe('GameComponent', () => {
     expect(component.playerTwo).toBeDefined();
   });
 
-  it('should have a method gameReady()', () => {
-    expect(component.gameReady()).toBeFalsy();
+  it('should have a method gameReady', () => {
+    expect(component.gameReady).toBeFalsy();
   });
 
   it('should have a clickHand() method', () => {
