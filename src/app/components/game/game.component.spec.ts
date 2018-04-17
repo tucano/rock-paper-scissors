@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { PlayerService } from '../../services/player.service';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatSelectModule } from '@angular/material';
 import { GameComponent } from './game.component';
 import { Player } from '../../models/player';
 import { Rock, Paper, Scissors, ValidHands } from '../../models/hand';
@@ -13,7 +16,12 @@ describe('GameComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GameComponent ],
-      imports: [ MatCardModule ],
+      imports: [
+        FormsModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatSelectModule
+      ],
       providers: [PlayerService]
     })
     .compileComponents();
@@ -140,5 +148,11 @@ describe('GameComponent', () => {
     component.playerTwo.currentHand = Rock;
     component.runGame();
     expect(component.playerTwo.score).toEqual(score + 1);
+  });
+
+  it('should disable a player if used', () => {
+    const player = new Player(0, 'test0', false, new GameStyle(0, 'random', 0));
+    component.playerOne = player;
+    expect(component.isInUse(player)).toBeTruthy();
   });
 });

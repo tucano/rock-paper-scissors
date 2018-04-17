@@ -50,4 +50,12 @@ export class Player {
       this.setHand(this.gameStyle.draw(enemy.previousHand));
     }
   }
+
+  info(): string {
+    if (this.human) {
+      return `${this.name} - human`;
+    } else {
+      return `${this.name} - ${this.gameStyle.name}`;
+    }
+  }
 }

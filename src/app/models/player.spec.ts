@@ -69,6 +69,10 @@ describe('Human Player', () => {
     expect(() => (player.makeMove(enemy)))
     .toThrowError(`Can't use makeMove for a Human player`);
   });
+
+  it('should return info', () => {
+    expect(player.info()).toBe('pippo - human');
+  });
 });
 
 describe('Computer Player', () => {
@@ -95,6 +99,10 @@ describe('Computer Player', () => {
     const enemy = new Player(99, 'test', true);
     player.makeMove(enemy);
     expect(ValidHands).toContain(player.currentHand);
+  });
+
+  it('should return info', () => {
+    expect(player.info()).toBe('pippo - random');
   });
 });
 

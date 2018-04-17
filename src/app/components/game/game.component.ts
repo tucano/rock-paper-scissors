@@ -32,8 +32,14 @@ export class GameComponent implements OnInit {
   }
 
   clickHand(n: number) {
-    this.playerOne.setHand(this.getHand(n));
-    this.playerTwo.makeMove(this.playerOne);
+    if (this.playerOne.human) {
+      this.playerOne.setHand(this.getHand(n));
+      this.playerTwo.makeMove(this.playerOne);
+    } else if (this.playerTwo.human) {
+      this.playerTwo.setHand(this.getHand(n));
+      this.playerOne.makeMove(this.playerTwo);
+    }
+
     this.runGame();
   }
 
@@ -58,6 +64,10 @@ export class GameComponent implements OnInit {
 
   gameReady(): boolean {
     return(this.playerOne.ready() && this.playerTwo.ready());
+  }
+
+  isInUse(player: Player) {
+    return(this.playerOne === player || this.playerTwo === player);
   }
 
   private initPlayers() {

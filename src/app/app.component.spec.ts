@@ -1,11 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { GameComponent } from './components/game/game.component';
 import { PlayerService } from './services/player.service';
 
-import { MatToolbarModule, MatCardModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatSelectModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,8 +18,11 @@ describe('AppComponent', () => {
         GameComponent
       ],
       imports: [
+        FormsModule,
+        BrowserAnimationsModule,
         MatToolbarModule,
-        MatCardModule
+        MatCardModule,
+        MatSelectModule
       ],
       providers: [PlayerService]
     }).compileComponents();

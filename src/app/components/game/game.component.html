@@ -2,6 +2,25 @@
   <mat-card-content>
     <div fxLayout="column" fxLayoutGap="10px">
 
+      <!-- PLAYERS -->
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="50px">
+        <mat-form-field>
+          <mat-select placeholder="Player One" [(ngModel)]="playerOne" (change)="playersChange()">
+            <mat-option *ngFor="let player of players" [value]="player" [disabled]="isInUse(player)">
+              {{ player.info() }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <h2 class="mat-h2">VS</h2>
+        <mat-form-field>
+          <mat-select placeholder="Player Two" [(ngModel)]="playerTwo" (change)="playersChange()">
+            <mat-option *ngFor="let player of players" [value]="player" [disabled]="isInUse(player)">
+              {{ player.info() }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
       <!-- GAME BOARD -->
       <div fxLayout="column" fxLayoutAlign="center center">
         <h1>{{ lastGameResult }} <!-- Rock smashes scissors! Player One Win! --></h1>
