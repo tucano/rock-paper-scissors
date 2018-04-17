@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
   lastGameResult = 'Ready to play?';
   handsMsg = 'PLAYER ONE CHOOSE YOUR WEAPON!';
   computerVsComputer = false;
+  numberOfSimulations = 1;
 
   players: Player[];
   playerOne: Player;
@@ -31,6 +32,18 @@ export class GameComponent implements OnInit {
         this.players = players;
         this.initPlayers();
       });
+  }
+
+  runSimulations() {
+    let x = 0;
+    const intervalId = setInterval(() => {
+      this.playerOne.makeMove(this.playerTwo);
+      this.playerTwo.makeMove(this.playerOne);
+      this.runGame();
+      if (++x === this.numberOfSimulations) {
+        clearInterval(intervalId);
+      }
+    }, 200);
   }
 
   clickHand(n: number) {

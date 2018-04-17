@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PlayerService } from '../../services/player.service';
-import { MatCardModule, MatSelectModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatSelectModule, MatButtonModule, MatInputModule } from '@angular/material';
 import { GameComponent } from './game.component';
 import { Player } from '../../models/player';
 import { Rock, Paper, Scissors, ValidHands } from '../../models/hand';
@@ -21,7 +21,8 @@ describe('GameComponent', () => {
         BrowserAnimationsModule,
         MatCardModule,
         MatSelectModule,
-        MatButtonModule
+        MatButtonModule,
+        MatInputModule
       ],
       providers: [PlayerService]
     })
@@ -156,4 +157,10 @@ describe('GameComponent', () => {
     component.playerOne = player;
     expect(component.isInUse(player)).toBeTruthy();
   });
+
+  it('should run simulations', () => {
+    spyOn(component, 'runSimulations');
+    component.runSimulations();
+    expect(component.runSimulations).toHaveBeenCalled();
+  })
 });

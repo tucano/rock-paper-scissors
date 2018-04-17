@@ -7,7 +7,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { GameComponent } from './components/game/game.component';
 import { PlayerService } from './services/player.service';
 
-import { MatToolbarModule, MatCardModule, MatSelectModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatSelectModule, MatButtonModule, MatInputModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -23,7 +23,8 @@ describe('AppComponent', () => {
         MatToolbarModule,
         MatCardModule,
         MatSelectModule,
-        MatButtonModule
+        MatButtonModule,
+        MatInputModule
       ],
       providers: [PlayerService]
     }).compileComponents();
