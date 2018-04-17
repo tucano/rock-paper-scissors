@@ -1,0 +1,39 @@
+@import '~styles/variables';
+@import '~styles/palettes';
+
+.rps-gameboard {
+  min-width: 800px;
+  min-height: 500px;
+  background: rps-color('background');
+  border: 5px solid rps-color('accent');
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.rps-gameboard img {
+  width: $rps-hand-width;
+  height: $rps-hand-height;
+}
+
+.rps-vs {
+  text-align: center;
+  font-size: 48px;
+}
+
+.rps-button {
+  width: $rps-button-width;
+  height: $rps-button-height;
+}
+
+.rps-button img {
+  width: $rps-button-width;
+  height: $rps-button-height;
+}
+
+.rps-weapon-title {
+  font-size: 24px;
+}
+
+.rps-simulations-slider {
+  width: 250px;
+}

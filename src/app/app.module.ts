@@ -5,12 +5,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatSelectModule, MatToolbarModule, MatCardModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-
+import { GameComponent } from './components/game/game.component';
+import { PlayerService } from './services/player.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     MatToolbarModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,19 +2,24 @@ import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { GameComponent } from './components/game/game.component';
+import { PlayerService } from './services/player.service';
 
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        ToolbarComponent
+        ToolbarComponent,
+        GameComponent
       ],
       imports: [
-        MatToolbarModule
-      ]
+        MatToolbarModule,
+        MatCardModule
+      ],
+      providers: [PlayerService]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
